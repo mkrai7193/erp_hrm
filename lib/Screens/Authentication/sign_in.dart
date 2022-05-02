@@ -9,6 +9,8 @@ import 'package:maan_hrm/Screens/Home/home_screen.dart';
 import 'package:maan_hrm/constant.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../../Common/local_auth_api.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -59,14 +61,15 @@ class _SignInState extends State<SignIn> {
                                     textFieldType: TextFieldType.PHONE,
                                     controller: phoneController,
                                     enabled: true,
-                                    validator: (value) => InputValidator().validatePhoneNumber(value),
+                                    validator: (value) => InputValidator()
+                                        .validatePhoneNumber(value),
                                     decoration: InputDecoration(
                                         labelText: 'Phone Number',
                                         hintText: '1767 432556',
                                         labelStyle: kTextStyle,
                                         counterText: '',
                                         floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
+                                            FloatingLabelBehavior.never,
                                         border: const OutlineInputBorder(),
                                         prefixIcon: CountryCodePicker(
                                             padding: EdgeInsets.zero,
@@ -79,7 +82,8 @@ class _SignInState extends State<SignIn> {
                                 AppTextField(
                                     textFieldType: TextFieldType.PASSWORD,
                                     controller: passwordController,
-                                    validator: (value) => InputValidator().validatePassword(value),
+                                    validator: (value) => InputValidator()
+                                        .validatePassword(value),
                                     maxLength: 12,
                                     decoration: InputDecoration(
                                         counterText: '',
@@ -137,7 +141,13 @@ class _SignInState extends State<SignIn> {
 
   Future validateSignInForm() async {
     if (_formKey.currentState!.validate()) {
-      const HomeScreen().launch(context);
+      final isAuthenticated = await LocalAuthApi.authenticate();
+
+      if (isAuthenticated) {
+        const HomeScreen().launch(context);
+      } else {
+        debugPrint("Not Authenticate $isAuthenticated");
+      }
     } else {
       return;
     }
