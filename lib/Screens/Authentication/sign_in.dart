@@ -9,8 +9,6 @@ import 'package:maan_hrm/Screens/Home/home_screen.dart';
 import 'package:maan_hrm/constant.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../Common/local_auth_api.dart';
-
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -74,7 +72,7 @@ class _SignInState extends State<SignIn> {
                                         prefixIcon: CountryCodePicker(
                                             padding: EdgeInsets.zero,
                                             onChanged: print,
-                                            initialSelection: 'BD',
+                                            initialSelection: 'IN',
                                             showFlag: true,
                                             showDropDownButton: true,
                                             alignLeft: false))),
@@ -141,13 +139,7 @@ class _SignInState extends State<SignIn> {
 
   Future validateSignInForm() async {
     if (_formKey.currentState!.validate()) {
-      final isAuthenticated = await LocalAuthApi.authenticate();
-
-      if (isAuthenticated) {
-        const HomeScreen().launch(context);
-      } else {
-        debugPrint("Not Authenticate $isAuthenticated");
-      }
+      const HomeScreen().launch(context);
     } else {
       return;
     }

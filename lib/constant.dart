@@ -64,6 +64,9 @@ List<String> employeeName = [
 
 List<String> genderList = ['Male', 'Female'];
 
+List<String> modeOfConvenienceList = ['Private transport', 'Public Transport'];
+List<String> yearList = ['2021', '2022', '2023'];
+
 List<String> expensePurpose = [
   'Marketing',
   'Transportation',
