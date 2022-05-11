@@ -206,6 +206,29 @@ class _LeaveRequestState extends State<LeaveRequest> {
                                         border: OutlineInputBorder())),
                               ),
                             ]),
+                            const SizedBox(height: 15.0),
+                            Row(children: [
+                              Expanded(
+                                  child: Text('Attendee', style: kTextStyle)),
+                              Expanded(
+                                  child: SizedBox(
+                                      height: 60.0,
+                                      child: FormField(builder:
+                                          (FormFieldState<dynamic> field) {
+                                        return InputDecorator(
+                                            decoration: InputDecoration(
+                                                floatingLabelBehavior:
+                                                    FloatingLabelBehavior
+                                                        .always,
+                                                labelStyle: kTextStyle,
+                                                border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0))),
+                                            child: DropdownButtonHideUnderline(
+                                                child: getModeOfConvenience()));
+                                      })))
+                            ]),
                             const SizedBox(height: 30.0),
                             Row(children: [
                               const Spacer(),
@@ -290,30 +313,33 @@ class _LeaveRequestState extends State<LeaveRequest> {
                                     const SizedBox(height: 10),
                                 itemCount: 5)
                           ])
-                    : ListView(physics: const NeverScrollableScrollPhysics(), shrinkWrap: true,children: [
-                        Row(children: [
-                          Expanded(child: Text('Year', style: kTextStyle)),
-                          Expanded(
-                              child: SizedBox(
-                                  height: 60.0,
-                                  child: FormField(
-                                      builder: (FormFieldState<dynamic> field) {
-                                    return InputDecorator(
-                                        decoration: InputDecoration(
-                                            floatingLabelBehavior:
-                                                FloatingLabelBehavior.always,
-                                            labelStyle: kTextStyle,
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        5.0))),
-                                        child: DropdownButtonHideUnderline(
-                                            child: getModeOfConvenience()));
-                                  })))
-                        ]),
-                        const SizedBox(height: 15.0),
-                        Expanded(
-                            child: ListView.separated(
+                    : ListView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        children: [
+                            Row(children: [
+                              Expanded(child: Text('Year', style: kTextStyle)),
+                              Expanded(
+                                  child: SizedBox(
+                                      height: 60.0,
+                                      child: FormField(builder:
+                                          (FormFieldState<dynamic> field) {
+                                        return InputDecorator(
+                                            decoration: InputDecoration(
+                                                floatingLabelBehavior:
+                                                    FloatingLabelBehavior
+                                                        .always,
+                                                labelStyle: kTextStyle,
+                                                border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0))),
+                                            child: DropdownButtonHideUnderline(
+                                                child: getModeOfConvenience()));
+                                      })))
+                            ]),
+                            const SizedBox(height: 15.0),
+                            ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => Container(
@@ -413,8 +439,8 @@ class _LeaveRequestState extends State<LeaveRequest> {
                                     ])),
                                 separatorBuilder: (context, index) =>
                                     const SizedBox(height: 20),
-                                itemCount: 5))
-                      ])
+                                itemCount: 5)
+                          ])
               ]))
         ])));
   }

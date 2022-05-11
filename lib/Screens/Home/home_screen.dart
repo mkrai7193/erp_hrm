@@ -16,6 +16,7 @@ import 'package:maan_hrm/Screens/Notice%20Board/empty_notice_board.dart';
 import 'package:maan_hrm/Screens/OD%20Management/select_od_type.dart';
 import 'package:maan_hrm/Screens/Payroll%20Management/management_screen.dart';
 import 'package:maan_hrm/Screens/Settings/settings_screen.dart';
+import 'package:maan_hrm/Screens/Time%20Attendence/mis_punch.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -421,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               elevation: 2.0,
                               child: GestureDetector(
                                   onTap: () {
-                                    const PayrollManagementScreen()
+                                    const MisPunch()
                                         .launch(context);
                                   },
                                   child: Container(
