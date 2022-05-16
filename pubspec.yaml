@@ -43,7 +43,8 @@ dependencies:
   flutter_credit_card: ^3.0.1
   nb_utils: ^4.4.10
   share_plus: ^3.0.4
-
+  http:
+  modal_progress_hud_nsn: ^0.1.0-nullsafety-1
 
 dev_dependencies:
   flutter_test:
